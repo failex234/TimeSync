@@ -19,4 +19,4 @@ If you don't want to use the Makefile for whatever reason you can build the proj
 - Run java class
 
 ## Dependencies
-Basically none just for GNU/Linux you need the kernel headers
+None except for GNU/Linux you'll need the kernel headers.
