@@ -17,6 +17,7 @@ public class TimeSync {
         System.load("C:\\Users\\Felix\\gitreps\\TimeSync\\src\\de\\failex\\timesync\\setdate.dll");
     }
 
+    //It is recommended to use your own server / a reliable server
     final static String HOST = "https://felixnaumann.me/api/index.php?action=getdate";
 
     public static void main(String[] args) throws IOException, ParseException {
@@ -53,7 +54,8 @@ public class TimeSync {
             dateset = setdate(day, month, year, hour, min, sec, epoch);
         }
         catch(Exception e) {
-           //Do nothing
+            System.out.println("Unable to get server time. Exiting...");
+            System.exit(1);
         }
 
         if (dateset) {
