@@ -17,3 +17,6 @@ If you don't want to use the Makefile for whatever reason you can build the proj
 - Change line 17 in TimeSync.java to the absolute path to the compiled library
 - Compile java code
 - Run java class
+
+## Dependencies
+Basically none just for GNU/Linux you need the kernel headers

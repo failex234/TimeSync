@@ -6,6 +6,9 @@
 
 #ifdef __WIN32
 #include <windows.h>
+#elif defined(__linux__)
+#include <errno.h>
+#include <sys/time.h>
 #endif
 
 JNIEXPORT jboolean JNICALL Java_de_failex_timesync_TimeSync_setdate(JNIEnv *env, jclass clazz, jint day, jint month, jint year, jint hour, jint minute, jint second, jlong epoch) {
@@ -47,6 +50,33 @@ JNIEXPORT jboolean JNICALL Java_de_failex_timesync_TimeSync_setdate(JNIEnv *env,
     }
 #elif defined(__linux__)
     printf("(JNI) GNU/Linux detected!\n");
+
+    //Get existing structs so we don't have to give every variable a value
+    timeval time;
+    timezone zone;
+
+    int getreturn = gettimeofday(&time, &zone);
+
+    //gettimeofday failed
+    if (getreturn == -1) {
+        int err = errno;
+        printf("(JNI) Can't get system time: %s\n", errno(err))
+        return 0;
+    }
+
+    //Set new time
+    timeval.time_t = epoch;
+
+    int setreturn = gettimeofday(&time, &zone);
+
+    //settimeofday failed
+    if (setreturn == -1) {
+        int err = errno;
+        printf("(JNI) Can't set system time: %s\n", errno(err));
+        return 0;
+    }
+
+    return 1;
 
 #else
     printf("(JNI) Unknown system, unable to set time!\n");
