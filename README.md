@@ -10,3 +10,10 @@ The compiler will detect your OS and will then compile the right code for your O
 - Edit the first three lines of the Makefile to set the correct include paths for JNI
 - Edit line 17 with the absolute path to this repository + build/setdate.(dll / so)
 
+## Build instructions
+If you don't want to use the Makefile for whatever reason you can build the project like this:
+
+- Compile setdate.c as a library
+- Change line 17 in TimeSync.java to the absolute path to the compiled library
+- Compile java code
+- Run java class
