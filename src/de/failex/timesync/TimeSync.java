@@ -4,6 +4,7 @@ import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,7 +15,7 @@ import java.util.GregorianCalendar;
 public class TimeSync {
 
     static {
-        System.load("C:\\Users\\Felix\\gitreps\\TimeSync\\src\\de\\failex\\timesync\\setdate.dll");
+        System.load("C:\\Users\\Felix\\gitreps\\TimeSync\\build\\setdate.dll");
     }
 
     //It is recommended to use your own server / a reliable server
@@ -59,6 +60,7 @@ public class TimeSync {
             dateset = setdate(day, month, year, hour, min, sec, epoch);
         }
         catch(Exception e) {
+            e.printStackTrace();
             System.out.println("Unable to get server time. Exiting...");
             System.exit(1);
         }

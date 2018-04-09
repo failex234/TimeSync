@@ -77,27 +77,27 @@ JNIEXPORT jboolean JNICALL Java_de_failex_timesync_TimeSync_setdate(JNIEnv *env,
     printf("(JNI) GNU/Linux detected!\n");
 
     //Get existing structs so we don't have to give every variable a value
-    timeval time;
-    timezone zone;
+    struct timeval time;
+    struct timezone zone;
 
     int getreturn = gettimeofday(&time, &zone);
 
     //gettimeofday failed
     if (getreturn == -1) {
         int err = errno;
-        printf("(JNI) Can't get system time: %s\n", errno(err))
+        printf("(JNI) Can't get system time: %d\n", err);
         return 0;
     }
 
     //Set new time
-    timeval.time_t = epoch;
+    time.tv_sec = epoch;
 
     int setreturn = gettimeofday(&time, &zone);
 
     //settimeofday failed
     if (setreturn == -1) {
         int err = errno;
-        printf("(JNI) Can't set system time: %s\n", errno(err));
+        printf("(JNI) Can't set system time: %d\n", err);
         return 0;
     }
 
