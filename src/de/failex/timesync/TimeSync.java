@@ -21,6 +21,11 @@ public class TimeSync {
     final static String HOST = "https://felixnaumann.me/api/index.php?action=getdate";
 
     public static void main(String[] args) throws IOException, ParseException {
+
+        if(!isprivileged()) {
+            System.out.println("Please run this program as an admin!");
+            System.exit(1);
+        }
         URL requrl = new URL(HOST);
         HttpsURLConnection conn = (HttpsURLConnection) requrl.openConnection();
         boolean dateset = false;
@@ -64,4 +69,6 @@ public class TimeSync {
     }
 
     public static native boolean setdate(int day, int month, int year, int hour, int min, int sec, long epoch);
+
+    public static native boolean isprivileged();
 }

@@ -10,10 +10,18 @@ extern "C" {
 /*
  * Class:     de_failex_timesync_TimeSync
  * Method:    setdate
- * Signature: (IIIIII)Z
+ * Signature: (IIIIIIJ)Z
  */
 JNIEXPORT jboolean JNICALL Java_de_failex_timesync_TimeSync_setdate
   (JNIEnv *, jclass, jint, jint, jint, jint, jint, jint, jlong);
+
+/*
+ * Class:     de_failex_timesync_TimeSync
+ * Method:    isprivileged
+ * Signature: ()Z
+ */
+JNIEXPORT jboolean JNICALL Java_de_failex_timesync_TimeSync_isprivileged
+  (JNIEnv *, jclass);
 
 #ifdef __cplusplus
 }

@@ -11,6 +11,31 @@
 #include <sys/time.h>
 #endif
 
+JNIEXPORT jboolean JNICALL Java_de_failex_timesync_TimeSync_isprivileged(JNIEnv *env, jclass clazz) {
+#ifdef __WIN32
+    int isadmin = 0;
+    HANDLE hToken = NULL;
+
+    if (OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &hToken)) {
+        TOKEN_ELEVATION Elevation;
+        DWORD cbSize = sizeof(TOKEN_ELEVATION);
+
+        if (GetTokenInformation(hToken, TokenElevation, &Elevation, sizeof(Elevation), &cbSize)) {
+            isadmin = Elevation.TokenIsElevated;
+        }
+    }
+
+    if (isadmin) {
+        CloseHandle(hToken);
+    }
+
+    return isadmin;
+
+#elif defined(__linux__)
+    return getuid() == 0 ? 1 : 0;
+#endif
+}
+
 JNIEXPORT jboolean JNICALL Java_de_failex_timesync_TimeSync_setdate(JNIEnv *env, jclass clazz, jint day, jint month, jint year, jint hour, jint minute, jint second, jlong epoch) {
 
 #ifdef __WIN32
