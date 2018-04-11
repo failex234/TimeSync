@@ -20,6 +20,6 @@ If you don't want to use the Makefile for whatever reason you can build the proj
 - Run java class
 
 ## Dependencies
-Windows: Windows API Headers (windows.h)
-Linux: any lib c (errno.h, time.h)
-For both: Standard Headers (stdio.h, stdlib.h, stdint.h)
+- Windows: Windows API Headers (windows.h)
+- Linux: any lib c (errno.h, time.h)
+- For both: Standard Headers (stdio.h, stdlib.h, stdint.h)
