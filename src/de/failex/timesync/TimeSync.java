@@ -15,7 +15,7 @@ import java.util.GregorianCalendar;
 public class TimeSync {
 
     static {
-        System.load("C:\\Users\\Felix\\gitreps\\TimeSync\\build\\setdate.dll");
+        System.load("/home/felix/IdeaProjects/TimeSync/build/setdate.so");
     }
 
     //It is recommended to use your own server / a reliable server
