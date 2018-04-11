@@ -9,7 +9,7 @@ The compiler will detect your OS and will then compile the right code for your O
 ## Before you start
 - Edit the first three lines of the Makefile to set the correct include paths for JNI
 - Edit line 17 with the absolute path to this repository + build/setdate.(dll / so)
-- Edit the jni include lines in the Makefile (For windows ll. 1 - 2, linux 3 - 4)
+- Edit the jni include lines in the Makefile (For windows ll. 2 - 3, linux 4 - 5)
 
 ## Build instructions
 If you don't want to use the Makefile for whatever reason you can build the project like this:
